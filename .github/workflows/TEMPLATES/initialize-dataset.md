@@ -21,3 +21,4 @@ To be integrated via GitHub, a dataset must meet the following conditions:
 - [ ]  Établir le pipeline de correction des jeux de données / Establish the dataset correction pipeline
 - [ ]  Ajouter des fichiers de données traitées / Add processed data files
 
+@OGSL-SLGO/data-team
