@@ -12,8 +12,8 @@ jobs:
       - name: Create an issue
         run: |
           gh issue create \
-          --title "Initialize Dataset!"\
-          --body-file ".github/workflows/TEMPLATES/initialize-dataset.md"
+          --title "Initialize Dataset!" \
+          --body-file ".github/workflows/TEMPLATES/initialize-dataset.md" \
           --assignee "{{ github.actor }}"
 
       - name: Delete initialization related issues
