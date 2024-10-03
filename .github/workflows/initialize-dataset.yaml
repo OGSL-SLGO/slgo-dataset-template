@@ -16,7 +16,7 @@ jobs:
           gh issue create \
           --title "Initialize Dataset!" \
           --body-file ".github/workflows/TEMPLATES/initialize-dataset.md" \
-          --assignee "{{ github.actor }}"
+          --assignee "${{ github.actor }}"
 
       - name: Delete initialization related issues
         if: ${{ github.repository != 'OGSL-slgo/slgo-dataset-template' }}
