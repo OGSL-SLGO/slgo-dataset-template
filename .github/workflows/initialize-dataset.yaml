@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     # if: ${{ github.repository != 'OGSL-slgo/slgo-dataset-template' }}
     env:
-      GH_TKOKEN: ${{ secrets.GITHUB_TOKEN }}
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - uses: actions/checkout@v4
       - name: Create an issue
