@@ -26,7 +26,7 @@ jobs:
       - name: Update readme to match new repository
         if: ${{ github.repository != 'OGSL-slgo/slgo-dataset-template' }}
         run: 
-          sed -i 's/# title/# ${{ github.repository_owner}} - ${{ github.repository }}/' README.md
+          sed -i "s/# title/# ${{ github.repository }}/" README.md
 
       - uses: stefanzweifel/git-auto-commit-action@v5
         with:
