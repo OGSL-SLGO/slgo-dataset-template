@@ -1,32 +1,31 @@
 name: Initialization of the new repository
 on:
-    push:
-      branches: main
+  push:
+    branches: main
 
 jobs:
-  create_issue:
+  init:
     runs-on: ubuntu-latest
     if: ${{ github.repository != 'OGSL-slgo/slgo-dataset-template' }}
     steps:
       - uses: actions/checkout@v4
+      - name: Create an issue
+        run: |
+          gh issue create \
+          --title "New dataset!"\
+          --template initialize-dataset.md
+          --assignee {{ github.actor }}
 
-    - name: Create an issue
-      run: |
-        gh issue create \
-         --title "New dataset!"\
-         --template initialize-dataset.md
-         --assignee {{ github.actor }}
-
-    - name: Delete initialization related issues
-      run: |
-        rm -rf .github/workflows/initialize-dataset.yaml
-        rm -rf .github/ISSUE_TEMPLATE/initialize-dataset.md
-      
-    - uses: stefanzweifel/git-auto-commit-action@v5
-      with:
-        commit_message: "Dataset Initialization"
-        branch: ${{ github.ref }}
-        token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Delete initialization related issues
+        run: |
+          rm -rf .github/workflows/initialize-dataset.yaml
+          rm -rf .github/ISSUE_TEMPLATE/initialize-dataset.md
+        
+      - uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Dataset Initialization"
+          branch: ${{ github.ref }}
+          token: ${{ secrets.GITHUB_TOKEN }}
 
     
 
