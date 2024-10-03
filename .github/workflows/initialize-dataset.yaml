@@ -6,7 +6,7 @@ on:
 jobs:
   init:
     runs-on: ubuntu-latest
-    # if: ${{ github.repository != 'OGSL-slgo/slgo-dataset-template' }}
+    if: ${{ github.repository != 'OGSL-slgo/slgo-dataset-template' }}
     env:
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
@@ -19,7 +19,6 @@ jobs:
           --assignee "${{ github.actor }}"
 
       - name: Clean up repository
-        if: ${{ github.repository != 'OGSL-slgo/slgo-dataset-template' }}
         run: |
           rm -rf .github/workflows/initialize-dataset.yaml
           rm -rf .github/ISSUE_TEMPLATE/initialize-dataset.md
