@@ -18,15 +18,12 @@ jobs:
           --body-file ".github/workflows/TEMPLATES/initialize-dataset.md" \
           --assignee "${{ github.actor }}"
 
-      - name: Delete initialization related issues
+      - name: Clean up repository
         if: ${{ github.repository != 'OGSL-slgo/slgo-dataset-template' }}
         run: |
           rm -rf .github/workflows/initialize-dataset.yaml
           rm -rf .github/ISSUE_TEMPLATE/initialize-dataset.md
-      - name: Update readme to match new repository
-        if: ${{ github.repository != 'OGSL-slgo/slgo-dataset-template' }}
-        run: 
-          sed -i "s/# title/# ${{ github.repository }}/g" README.md
+          sed -i "s/# slgo-dataset-repository-template/# ${{ github.repository }}/g" README.md
 
       - uses: stefanzweifel/git-auto-commit-action@v5
         with:
