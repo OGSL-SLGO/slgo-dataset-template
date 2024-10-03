@@ -23,7 +23,7 @@ jobs:
         run: |
           rm -rf .github/workflows/initialize-dataset.yaml
           rm -rf .github/ISSUE_TEMPLATE/initialize-dataset.md
-          sed -i "s/# slgo-dataset-repository-template/# ${{ github.repository }}/g" README.md
+          sed -i 's|# slgo-dataset-repository-template|# ${{ github.repository }}|g' README.md
 
       - uses: stefanzweifel/git-auto-commit-action@v5
         with:
