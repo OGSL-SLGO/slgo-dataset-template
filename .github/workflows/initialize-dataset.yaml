@@ -23,7 +23,11 @@ jobs:
         run: |
           rm -rf .github/workflows/initialize-dataset.yaml
           rm -rf .github/ISSUE_TEMPLATE/initialize-dataset.md
-        
+      - name: Update readme to match new repository
+        if: ${{ github.repository != 'OGSL-slgo/slgo-dataset-template' }}
+        run: 
+          sed -i 's/# title/# ${{ github.repository_owner}} - ${{ github.repository }}/' README.md
+
       - uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "Dataset Initialization"
