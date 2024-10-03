@@ -17,6 +17,7 @@ jobs:
           --assignee "{{ github.actor }}"
 
       - name: Delete initialization related issues
+        if: ${{ github.repository != 'OGSL-slgo/slgo-dataset-template' }}
         run: |
           rm -rf .github/workflows/initialize-dataset.yaml
           rm -rf .github/ISSUE_TEMPLATE/initialize-dataset.md
